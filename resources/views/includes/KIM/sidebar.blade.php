@@ -28,8 +28,8 @@
 
   <li class="nav-item">
     <a class="nav-link" href="index.html">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Paket Wisata</span></a>
+      <i class="fas fa-fw fa-book"></i>
+      <span>Artikel Informasi</span></a>
   </li>
   <!-- Divider -->
   <hr class="sidebar-divider" />

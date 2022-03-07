@@ -6,9 +6,13 @@ use App\Http\Controllers\GalleryWisataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KIM\KIMController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\POKDARWIS\POKDARWISController;
+use App\Http\Controllers\POKDARWIS\TravelPackageController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SinglePostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,14 +49,19 @@ Route::get("/checkout/success", [CheckoutController::class, "success"])->name(
 
 Route::prefix("kim")
     ->namespace("KIM")
+    ->middleware(["auth", "kim"])
     ->group(function () {
         Route::get("/", [KimController::class, "index"])->name("kim");
     });
 
 Route::prefix("pokdarwis")
     ->namespace("POKDARWIS")
+    ->middleware(["auth", "pokdarwis"])
     ->group(function () {
         Route::get("/", [PokdarwisController::class, "index"])->name(
             "pokdarwis"
         );
+        Route::resource("travel-package", "TravelPackageController");
     });
+
+Auth::routes(["verify" => true]);

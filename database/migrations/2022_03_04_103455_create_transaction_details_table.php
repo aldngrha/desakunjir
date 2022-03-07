@@ -17,7 +17,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->bigIncrements("id");
             $table->string("travel_packages_id");
             $table->string("transactions_id");
-            $table->string("users_id");
+            $table->string("username");
             $table->softDeletes();
             $table->timestamps();
         });
