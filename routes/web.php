@@ -6,11 +6,8 @@ use App\Http\Controllers\GalleryWisataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KIM\KIMController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\POKDARWIS\POKDARWISController;
-use App\Http\Controllers\POKDARWIS\TravelPackageController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SinglePostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +61,7 @@ Route::prefix("pokdarwis")
         Route::resource("travel-package", "TravelPackageController");
         Route::resource("photo", "PhotoController");
         Route::resource("gallery", "GalleryController");
+        Route::resource("owner", "OwnerController");
     });
 
 Auth::routes(["verify" => true]);

@@ -41,6 +41,11 @@
       <i class="fas fa-fw fa-image"></i>
       <span>Gallery</span></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('owner.index') }}">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Owner</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block" />

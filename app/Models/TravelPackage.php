@@ -30,4 +30,9 @@ class TravelPackage extends Model
     {
         return $this->hasMany(Photo::class, "travel_packages_id", "id");
     }
+
+    public function owners()
+    {
+        return $this->hasMany(Owner::class, "travel_packages_id", "id");
+    }
 }

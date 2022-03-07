@@ -15,7 +15,7 @@ class CreateOwnersTable extends Migration
     {
         Schema::create("owners", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->integer("travel_packages_id");
+            $table->string("travel_packages_id");
             $table->string("nama");
             $table->string("account_number");
             $table->string("bank");
