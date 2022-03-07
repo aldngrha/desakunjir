@@ -1,5 +1,9 @@
 @extends('layouts.POKDARWIS.admin')
 
+@section('title')
+Dashboard
+@endsection
+
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -38,7 +42,7 @@
                 <a href="{{ route('travel-package.edit', $item->id) }}" class="btn btn-info">
                   <i class="fa fa-pencil-alt"></i>
                 </a>
-                <form action="{{ route('travel-package.delete', $item->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('travel-package.destroy', $item->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger">

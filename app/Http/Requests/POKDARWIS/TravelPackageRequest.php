@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\KIM;
+namespace App\Http\Requests\POKDARWIS;
 
 use Illuminate\Foundation\Http\FormRequest;
 
