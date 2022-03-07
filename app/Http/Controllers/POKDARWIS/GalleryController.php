@@ -4,11 +4,11 @@ namespace App\Http\Controllers\POKDARWIS;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\POKDARWIS\TravelPackageRequest;
-use App\Models\TravelPackage;
+use App\Http\Requests\POKDARWIS\GalleryRequest;
+use App\Models\Gallery;
 use App\Http\Controllers\Controller;
 
-class TravelPackageController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TravelPackageController extends Controller
      */
     public function index()
     {
-        $items = TravelPackage::all();
+        $items = Gallery::all();
 
-        return view("pages.POKDARWIS.travel-package.index", [
+        return view("pages.POKDARWIS.gallery.index", [
             "items" => $items,
         ]);
     }
@@ -31,7 +31,7 @@ class TravelPackageController extends Controller
      */
     public function create()
     {
-        return view("pages.POKDARWIS.travel-package.create");
+        return view("pages.POKDARWIS.gallery.create");
     }
 
     /**
@@ -40,13 +40,15 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TravelPackageRequest $request)
+    public function store(GalleryRequest $request)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/gallery", "public");
 
-        TravelPackage::create($data);
-        return redirect()->route("travel-package.index");
+        Gallery::create($data);
+        return redirect()->route("gallery.index");
     }
 
     /**
@@ -68,9 +70,9 @@ class TravelPackageController extends Controller
      */
     public function edit($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
 
-        return view("pages.POKDARWIS.travel-package.edit", [
+        return view("pages.POKDARWIS.gallery.edit", [
             "item" => $item,
         ]);
     }
@@ -82,15 +84,17 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TravelPackageRequest $request, $id)
+    public function update(GalleryRequest $request, $id)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/gallery", "public");
 
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route("travel-package.index");
+        return redirect()->route("gallery.index");
     }
 
     /**
@@ -101,9 +105,9 @@ class TravelPackageController extends Controller
      */
     public function destroy($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Gallery::findOrFail($id);
         $item->delete();
 
-        return redirect()->route("travel-package.index");
+        return redirect()->route("gallery.index");
     }
 }

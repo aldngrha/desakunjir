@@ -62,6 +62,8 @@ Route::prefix("pokdarwis")
             "pokdarwis"
         );
         Route::resource("travel-package", "TravelPackageController");
+        Route::resource("photo", "PhotoController");
+        Route::resource("gallery", "GalleryController");
     });
 
 Auth::routes(["verify" => true]);

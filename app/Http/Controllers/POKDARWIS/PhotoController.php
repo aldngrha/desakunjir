@@ -4,11 +4,12 @@ namespace App\Http\Controllers\POKDARWIS;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\POKDARWIS\TravelPackageRequest;
-use App\Models\TravelPackage;
+use App\Http\Requests\POKDARWIS\PhotoRequest;
+use App\Models\Photo;
 use App\Http\Controllers\Controller;
+use App\Models\TravelPackage;
 
-class TravelPackageController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class TravelPackageController extends Controller
      */
     public function index()
     {
-        $items = TravelPackage::all();
+        $items = Photo::with(["travel_package"])->get();
 
-        return view("pages.POKDARWIS.travel-package.index", [
+        return view("pages.POKDARWIS.photo.index", [
             "items" => $items,
         ]);
     }
@@ -31,7 +32,10 @@ class TravelPackageController extends Controller
      */
     public function create()
     {
-        return view("pages.POKDARWIS.travel-package.create");
+        $travel_package = TravelPackage::all();
+        return view("pages.POKDARWIS.photo.create", [
+            "travel_packages" => $travel_package,
+        ]);
     }
 
     /**
@@ -40,13 +44,15 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TravelPackageRequest $request)
+    public function store(PhotoRequest $request)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/gallery", "public");
 
-        TravelPackage::create($data);
-        return redirect()->route("travel-package.index");
+        Photo::create($data);
+        return redirect()->route("photo.index");
     }
 
     /**
@@ -68,10 +74,12 @@ class TravelPackageController extends Controller
      */
     public function edit($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Photo::findOrFail($id);
+        $travel_package = TravelPackage::all();
 
-        return view("pages.POKDARWIS.travel-package.edit", [
+        return view("pages.POKDARWIS.photo.edit", [
             "item" => $item,
+            "travel_packages" => $travel_package,
         ]);
     }
 
@@ -82,15 +90,17 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TravelPackageRequest $request, $id)
+    public function update(PhotoRequest $request, $id)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
 
-        $item = TravelPackage::findOrFail($id);
+        $item = Photo::findOrFail($id);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/gallery", "public");
         $item->update($data);
 
-        return redirect()->route("travel-package.index");
+        return redirect()->route("photo.index");
     }
 
     /**
@@ -101,9 +111,9 @@ class TravelPackageController extends Controller
      */
     public function destroy($id)
     {
-        $item = TravelPackage::findOrFail($id);
+        $item = Photo::findOrFail($id);
         $item->delete();
 
-        return redirect()->route("travel-package.index");
+        return redirect()->route("photo.index");
     }
 }

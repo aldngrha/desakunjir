@@ -28,11 +28,19 @@
 
   <li class="nav-item">
     <a class="nav-link" href="{{ route('travel-package.index') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fas fa-fw fa-hotel"></i>
       <span>Paket Wisata</span></a>
   </li>
-  <!-- Divider -->
-  <hr class="sidebar-divider" />
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('photo.index') }}">
+      <i class="fas fa-fw fa-image"></i>
+      <span>Photo Wisata</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('gallery.index') }}">
+      <i class="fas fa-fw fa-image"></i>
+      <span>Gallery</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block" />
