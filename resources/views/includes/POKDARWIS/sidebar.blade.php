@@ -43,8 +43,13 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('owner.index') }}">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-users"></i>
       <span>Owner</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('transaction.index') }}">
+      <i class="fas fa-fw fa-dollar-sign"></i>
+      <span>Transaksi</span></a>
   </li>
 
   <!-- Divider -->

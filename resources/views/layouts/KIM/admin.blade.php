@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Desa Kunjir - Dashboard</title>
+    <title>Desa Kunjir - @yield('title')</title>
 
     @include('includes.KIM.style')
 

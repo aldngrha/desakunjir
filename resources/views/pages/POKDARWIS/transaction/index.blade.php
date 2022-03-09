@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Dashboard
+Transaksi
 @endsection
 
 @section('content')
@@ -10,8 +10,6 @@ Dashboard
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Paket Wisata</h1>
-    <a href="{{ route('travel-package.create') }}" class="btn btn-primary btn-sm shadow-sm">
-      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Paket Wisata</a>
   </div>
 
   <div class="row">
@@ -21,11 +19,10 @@ Dashboard
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nama</th>
-              <th>Lokasi</th>
-              <th>Hiburan</th>
-              <th>Durasi</th>
-              <th>Harga</th>
+              <th>Wisata</th>
+              <th>User</th>
+              <th>Total</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -33,16 +30,27 @@ Dashboard
             @forelse ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->title }}</td>
-              <td>{{ $item->location }}</td>
-              <td>{{ $item->hiburan }}</td>
-              <td>{{ $item->duration }}</td>
-              <td>{{ number_format($item->price,0,".",".") }}</td>
+              <td>{{ $item->travel_package->title }}</td>
+              <td>{{ $item->user->name }}</td>
+              <td>{{ $item->transaction_total }}</td>
+              <td>@if ($item->transaction_status == "PENDING")
+                <span class="badge badge-info">
+                  @elseif ($item->transaction_status == "SUCCESS")
+                  <span class="badge badge-success">
+                    @elseif ($item->transaction_status == "FAILED")
+                    <span class="badge badge-danger">
+                    </span>
+                    @endif
+                    {{ $item->transaction_status }}
+              </td>
               <td>
-                <a href="{{ route('travel-package.edit', $item->id) }}" class="btn btn-info">
+                <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+                <a href="{{ route('transaction.edit', $item->id) }}" class="btn btn-info">
                   <i class="fa fa-pencil-alt"></i>
                 </a>
-                <form action="{{ route('travel-package.destroy', $item->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('transaction.destroy', $item->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger">

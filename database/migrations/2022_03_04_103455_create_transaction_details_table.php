@@ -15,9 +15,10 @@ class CreateTransactionDetailsTable extends Migration
     {
         Schema::create("transaction_details", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("travel_packages_id");
             $table->string("transactions_id");
-            $table->string("username");
+            $table->string("name");
+            $table->string("email");
+            $table->string("number");
             $table->softDeletes();
             $table->timestamps();
         });

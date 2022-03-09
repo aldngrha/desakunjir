@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string("title");
             $table->text("image");
             $table->longText("about");
+            $table->date("date");
             $table->string("writer");
             $table->softDeletes();
             $table->timestamps();

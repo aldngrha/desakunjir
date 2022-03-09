@@ -16,10 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create("transactions", function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string("travel_packages_id");
-            $table->string("users_id");
-            $table->string("name");
-            $table->string("email");
-            $table->string("number");
+            $table->string("users_id")->nullable();
             $table->integer("transaction_total");
             $table->string("transaction_status");
             $table->softDeletes();

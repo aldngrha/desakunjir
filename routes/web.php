@@ -49,6 +49,7 @@ Route::prefix("kim")
     ->middleware(["auth", "kim"])
     ->group(function () {
         Route::get("/", [KimController::class, "index"])->name("kim");
+        Route::resource("post", "PostController");
     });
 
 Route::prefix("pokdarwis")
@@ -62,6 +63,7 @@ Route::prefix("pokdarwis")
         Route::resource("photo", "PhotoController");
         Route::resource("gallery", "GalleryController");
         Route::resource("owner", "OwnerController");
+        Route::resource("transaction", "TransactionController");
     });
 
 Auth::routes(["verify" => true]);
