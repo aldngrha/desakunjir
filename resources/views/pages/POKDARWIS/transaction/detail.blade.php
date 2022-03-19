@@ -24,7 +24,7 @@ Transaksi
 
   <div class="card shadow">
     <div class="card-body">
-      <table class="table-bordered">
+      <table class="table table-bordered">
         <tr>
           <th>ID</th>
           <td>{{ $item->id }}</td>
@@ -34,7 +34,7 @@ Transaksi
           <td>{{ $item->travel_package->title }}</td>
         </tr>
         <tr>
-          <th>Pmebeli</th>
+          <th>Pembeli</th>
           <td>{{ $item->user->name }}</td>
         </tr>
         <tr>

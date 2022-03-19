@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Tambah Paket Travel
+Ubah Header
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Tambah Paket Travel
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Ubah Paket Wisata {{ $item->title }}</h1>
+    <h1 class="h3 mb-0 text-gray-800">Ubah Header</h1>
   </div>
 
   @if ($errors->any())
@@ -24,17 +24,12 @@ Tambah Paket Travel
 
   <div class="card shadow">
     <div class="card-body">
-      <form action="{{ route('transaction.update', $item->id) }}" method="POST">
+      <form action="{{ route('header.update', $item->id) }}" method="POST" enctype="multipart/form-data">
         @method("PUT")
         @csrf
         <div class="form-group">
-          <label for="transaction_status">Status</label>
-          <select name="transaction_status" required class="form-control">
-            <option value="{{ $item->transaction_status }}">Tentukan Status Transaksi</option>
-            <option value="PENDING">PENDING</option>
-            <option value="SUCCESS">SUCCESS</option>
-            <option value="FAILED">FAILED</option>
-          </select>
+          <label for="image">Gambar</label>
+          <input type="file" name="image" class="form-control" placeholder="Gambar">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Ubah</button>
       </form>

@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Tambah Gallery
+Tambah Header
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Tambah Gallery
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Tambah Gallery</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Header</h1>
   </div>
 
   @if ($errors->any())
@@ -24,10 +24,10 @@ Tambah Gallery
 
   <div class="card shadow">
     <div class="card-body">
-      <form action="{{ route('photo.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('header.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-          <label for="image">Gambar</label>
+          <label for="image">Header</label>
           <input type="file" name="image" class="form-control" placeholder="Gambar">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Simpan</button>

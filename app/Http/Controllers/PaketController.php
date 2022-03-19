@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TravelPackage;
 use Illuminate\Http\Request;
 
 class PaketController extends Controller
 {
     public function index(Request $request)
     {
-        return view("pages.paket");
+        $items = TravelPackage::all();
+        return view("pages.paket", [
+            "items" => $items,
+        ]);
     }
 }

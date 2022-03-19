@@ -14,7 +14,7 @@ Details
           <div class="col p-0">
             <nav>
               <ol class="breadcrumb">
-                <a href="index.html" class="breadcrumb-item">
+                <a href="{{ route('home') }}" class="breadcrumb-item">
                   <li>Home</li>
                 </a>
                 <li class="breadcrumb-item active">Details</li>
@@ -25,48 +25,27 @@ Details
         <div class="row">
           <div class="col-lg-8 pl-lg-0">
             <div class="card card-details">
-              <h1>Homestay Pantai Mahoni</h1>
-              <p>Lampung Selatan</p>
+              <h1>{{ $item->title }}</h1>
+              <p>{{ $item->location }}</p>
+              @if ($item->galleries->count())
               <div class="gallery">
                 <div class="xzoom-container">
-                  <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom" id="xzoom-default"
-                    xoriginal="{{ url('frontend/images/detail.jpg') }}" />
+                  <img src="{{ Storage::url($item->galleries->first()->image) }}" class="xzoom" id="xzoom-default"
+                    xoriginal="{{ Storage::url($item->galleries->first()->image) }}" />
                 </div>
                 <div class="xzoom-thumbs">
-                  <a href="{{ url('frontend/images/detail.jpg') }}">
-                    <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom-gallery" width="128"
-                      xpreview="{{ url('frontend/images/detail.jpg') }}" />
+                  @foreach ($item->galleries as $gallery)
+                  <a href="{{ Storage::url($gallery->image) }}">
+                    <img src="{{ Storage::url($gallery->image) }}" class="xzoom-gallery" width="128"
+                      xpreview="{{ Storage::url($gallery->image) }}" />
                   </a>
-                  <a href="{{ url('frontend/images/detail.jpg') }}">
-                    <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom-gallery" width="128"
-                      xpreview="{{ url('frontend/images/detail.jpg') }}" />
-                  </a>
-                  <a href="{{ url('frontend/images/detail.jpg') }}">
-                    <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom-gallery" width="128"
-                      xpreview="{{ url('frontend/images/detail.jpg') }}" />
-                  </a>
-                  <a href="{{ url('frontend/images/detail.jpg') }}">
-                    <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom-gallery" width="128"
-                      xpreview="{{ url('frontend/images/detail.jpg') }}" />
-                  </a>
-                  <a href="{{ url('frontend/images/detail.jpg') }}">
-                    <img src="{{ url('frontend/images/detail.jpg') }}" class="xzoom-gallery" width="128"
-                      xpreview="{{ url('frontend/images/detail.jpg') }}" />
-                  </a>
+                  @endforeach
                 </div>
               </div>
+              @endif
               <h2>Tentang Wisata</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Numquam, libero facere. Quidem, eligendi ipsum asperiores ex
-                minima cum id modi tenetur assumenda, excepturi nihil
-                tempora beatae aperiam sit ducimus suscipit.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Vitae, vel? Voluptatem sapiente, doloremque explicabo sit
-                itaque ullam consectetur quas molestiae ipsam nulla et ex
-                deleniti. Velit rerum nulla ab doloribus?
+                {!! $item->about !!}
               </p>
               <div class="features row">
                 <div class="col-md-4">
@@ -74,7 +53,7 @@ Details
                     <i class="fa fa-ticket fa-2x icon"></i>
                     <div class="description">
                       <h5>Hiburan</h5>
-                      <p>Snorkling</p>
+                      <p>{{ $item->hiburan }}</p>
                     </div>
                   </div>
                 </div>
@@ -83,7 +62,7 @@ Details
                     <i class="fa-solid fa-language fa-2x icon"></i>
                     <div class="description">
                       <h5>Bahasa</h5>
-                      <p>Indonesia</p>
+                      <p>{{ $item->language }}</p>
                     </div>
                   </div>
                 </div>
@@ -92,7 +71,7 @@ Details
                     <i class="fa-solid fa-utensils fa-2x icon"></i>
                     <div class="description">
                       <h5>Makanan</h5>
-                      <p>Request</p>
+                      <p>{{ $item->foods }}</p>
                     </div>
                   </div>
                 </div>
@@ -100,7 +79,7 @@ Details
                   <div class="description">
                     <i class="fa-solid fa-location-dot fa-2x icon ml-1"></i>
                     <div class="description">
-                      <a href="">
+                      <a href="{{ $item->map }}">
                         <h5 class="location">Cari Lokasi</h5>
                       </a>
                     </div>
@@ -115,18 +94,27 @@ Details
               <table class="trip-information">
                 <tr>
                   <th width="50%">Durasi</th>
-                  <td width="50%" class="text-right">3 Malam</td>
+                  <td width="50%" class="text-right">{{ $item->duration }}</td>
                 </tr>
                 <tr>
                   <th width="50%">Harga</th>
-                  <td width="50%" class="text-right">Rp200.000</td>
+                  <td width="50%" class="text-right">Rp {{ number_format($item->price,0,".",".") }}</td>
                 </tr>
               </table>
             </div>
             <div class="join-container">
-              <a href="checkout.html" class="btn btn-block btn-join-now mt-3 py-2">
-                Pesan Sekarang
+              @auth
+              <form action="" method="POST">
+                <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                  Pesan Sekarang
+                </button>
+              </form>
+              @endauth
+              @guest
+              <a href="{{ route('register') }}" class="btn btn-block btn-join-now mt-3 py-2">
+                Masuk atau daftar untuk memesan
               </a>
+              @endguest
             </div>
           </div>
         </div>

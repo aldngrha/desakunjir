@@ -10,7 +10,7 @@ Paket Wisata
         <div class="col p-0">
           <nav>
             <ol class="breadcrumb">
-              <a href="index.html" class="breadcrumb-item">
+              <a href="{{ route('home') }}" class="breadcrumb-item">
                 <li>Home</li>
               </a>
               <li class="breadcrumb-item active">Paket Wisata</li>
@@ -19,72 +19,20 @@ Paket Wisata
         </div>
       </div>
       <div class="paket-wisata row">
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
+        @foreach ($items as $item)
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card-travel-right d-flex flex-column"
+            style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : '' }}')">
+            <div class="travel-country">{{ $item->title }}</div>
+            <div class="travel-location">Rp {{ number_format($item->price,0,".",".") }}</div>
             <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
+              <a href="{{ route('detail', $item->slug) }}" class="btn btn-travel-details px-4">
                 Lihat Paket
               </a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
-            <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
-                Lihat Paket
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
-            <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
-                Lihat Paket
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
-            <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
-                Lihat Paket
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
-            <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
-                Lihat Paket
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-md-4 col-lg-4">
-          <div class="card-travel d-flex flex-column" style="background-image: url('frontend/images/konten.jpg')">
-            <div class="travel-country">Homestay Pantai Mahoni</div>
-            <div class="travel-location">Rp. 250.000/Malam</div>
-            <div class="travel-button mt-auto">
-              <a href="details.html" class="btn btn-travel-details px-4">
-                Lihat Paket
-              </a>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

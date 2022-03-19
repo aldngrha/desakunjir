@@ -11,7 +11,7 @@ Informasi Wisata
         <div class="col p-0">
           <nav>
             <ol class="breadcrumb">
-              <a href="index.html" class="breadcrumb-item">
+              <a href="{{ route('home') }}" class="breadcrumb-item">
                 <li>Home</li>
               </a>
               <li class="breadcrumb-item active">Informasi</li>

@@ -27,19 +27,24 @@
   <div class="sidebar-heading">Interface</div>
 
   <li class="nav-item">
+    <a class="nav-link" href="{{ route('header.index') }}">
+      <i class="fas fa-fw fa-image"></i>
+      <span>Photo Header</span></a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="{{ route('travel-package.index') }}">
       <i class="fas fa-fw fa-hotel"></i>
       <span>Paket Wisata</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('photo.index') }}">
-      <i class="fas fa-fw fa-image"></i>
-      <span>Photo Wisata</span></a>
+    <a class="nav-link" href="{{ route('gallery.index') }}">
+      <i class="fas fa-fw fa-images"></i>
+      <span>Gallery</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('gallery.index') }}">
-      <i class="fas fa-fw fa-image"></i>
-      <span>Gallery</span></a>
+    <a class="nav-link" href="{{ route('photo.index') }}">
+      <i class="fas fa-fw fa-images"></i>
+      <span>Photo</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('owner.index') }}">

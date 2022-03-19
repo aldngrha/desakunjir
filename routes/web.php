@@ -24,23 +24,53 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", [HomeController::class, "index"])->name("home");
+
 Route::get("/paket-wisata", [PaketController::class, "index"])->name(
     "paket-wisata"
 );
-Route::get("/detail", [DetailController::class, "index"])->name("detail");
+
+Route::get("/detail/{slug}", [DetailController::class, "index"])->name(
+    "detail"
+);
+
 Route::get("/informasi", [InformasiController::class, "index"])->name(
     "informasi"
 );
+
 Route::get("/gallery", [GalleryWisataController::class, "index"])->name(
     "gallery-wisata"
 );
+
 Route::get("/single-post", [SinglePostController::class, "index"])->name(
     "single-post"
 );
-Route::get("/checkout", [CheckoutController::class, "index"])->name("checkout");
-Route::get("/checkout/success", [CheckoutController::class, "success"])->name(
-    "checkout-success"
-);
+
+Route::get("/checkout/{id}", [CheckoutController::class, "process"])
+    ->name("checkout_process")
+    ->middleware(["auth", "verified"]);
+
+Route::get("/checkout/{id}", [CheckoutController::class, "index"])
+    ->name("checkout")
+    ->middleware(["auth", "verified"]);
+
+Route::get("/checkout/create/{detail_id}", [
+    CheckoutController::class,
+    "create",
+])
+    ->name("checkout-create")
+    ->middleware(["auth", "verified"]);
+
+Route::get("/checkout/remove/{detail_id}", [
+    CheckoutController::class,
+    "remove",
+])
+    ->name("checkout-remove")
+    ->middleware(["auth", "verified"]);
+
+Route::get("/checkout/confirm/{id}", [
+    CheckoutController::class,
+    "success",
+])->name("checkout-success");
 
 // Admin Route
 
@@ -59,6 +89,8 @@ Route::prefix("pokdarwis")
         Route::get("/", [PokdarwisController::class, "index"])->name(
             "pokdarwis"
         );
+
+        Route::resource("header", "HeaderController");
         Route::resource("travel-package", "TravelPackageController");
         Route::resource("photo", "PhotoController");
         Route::resource("gallery", "GalleryController");

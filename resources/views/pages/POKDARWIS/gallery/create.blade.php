@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Tambah Gallery
+Tambah Photo Wisata
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Tambah Gallery
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Tambah Gallery</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Photo Wisata</h1>
   </div>
 
   @if ($errors->any())
@@ -26,6 +26,17 @@ Tambah Gallery
     <div class="card-body">
       <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="form-group">
+          <label for="travel_packages_id">Paket Wisata</label>
+          <select name="travel_packages_id" required class="form-control">
+            <option value="">Pilih Paket Wisata</option>
+            @foreach ($travel_packages as $travel_package)
+            <option value="{{ $travel_package->id }}">
+              {{ $travel_package->title }}
+            </option>
+            @endforeach
+          </select>
+        </div>
         <div class="form-group">
           <label for="image">Gambar</label>
           <input type="file" name="image" class="form-control" placeholder="Gambar">

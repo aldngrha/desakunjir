@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TravelPackage extends Model
 {
-    use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
@@ -26,9 +25,9 @@ class TravelPackage extends Model
 
     protected $hidden = [];
 
-    public function photos()
+    public function galleries()
     {
-        return $this->hasMany(Photo::class, "travel_packages_id", "id");
+        return $this->hasMany(Gallery::class, "travel_packages_id", "id");
     }
 
     public function owners()

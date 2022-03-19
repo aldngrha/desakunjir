@@ -11,7 +11,7 @@ Gallery Wisata
         <div class="col p-0">
           <nav>
             <ol class="breadcrumb">
-              <a href="index.html" class="breadcrumb-item">
+              <a href="{{ route('home') }}" class="breadcrumb-item">
                 <li>Home</li>
               </a>
               <li class="breadcrumb-item active">Gallery</li>
@@ -22,30 +22,12 @@ Gallery Wisata
     </div>
     <div class="container-fluid">
       <div class="row mt-4">
+        @foreach ($galleries as $gallery)
         <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
+          <a href="{{ Storage::url($gallery->image) }}" class="fancybox" data-fancybox="gallery1">
+            <img src="{{ Storage::url($gallery->image) }}" width="100%" height="100%" alt="" /></a>
         </div>
-        <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
-        </div>
-        <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
-        </div>
-        <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
-        </div>
-        <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
-        </div>
-        <div class="item col-sm-6 col-md-4 mb-4">
-          <a href="{{ url('frontend/images/gallery.jpg') }}" class="fancybox" data-fancybox="gallery1">
-            <img src="{{ url('frontend/images/gallery.jpg') }}" width="100%" height="100%" alt="" /></a>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

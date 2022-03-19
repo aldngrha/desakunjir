@@ -45,7 +45,7 @@ class PostController extends Controller
         $data = $request->all();
         $data["image"] = $request
             ->file("image")
-            ->store("assets/Post", "public");
+            ->store("assets/post", "public");
 
         Post::create($data);
         return redirect()->route("post.index");
@@ -89,7 +89,7 @@ class PostController extends Controller
         $data = $request->all();
         $data["image"] = $request
             ->file("image")
-            ->store("assets/Post", "public");
+            ->store("assets/post", "public");
 
         $item = Post::findOrFail($id);
         $item->update($data);

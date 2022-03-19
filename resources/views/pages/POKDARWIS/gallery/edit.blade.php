@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Ubah Gallery
+Ubah Photo Wisata
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Ubah Gallery
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Ubah Gallery</h1>
+    <h1 class="h3 mb-0 text-gray-800">Ubah Paket Wisata</h1>
   </div>
 
   @if ($errors->any())
@@ -27,6 +27,17 @@ Ubah Gallery
       <form action="{{ route('gallery.update', $item->id) }}" method="POST" enctype="multipart/form-data">
         @method("PUT")
         @csrf
+        <div class="form-group">
+          <label for="travel_packages_id">Paket Wisata</label>
+          <select name="travel_packages_id" class="form-control">
+            <option value="{{ $item->travel_packages_id }}">Jangan Diubah</option>
+            @foreach ($travel_packages as $travel_package)
+            <option value="{{ $travel_package->id }}">
+              {{ $travel_package->title }}
+            </option>
+            @endforeach
+          </select>
+        </div>
         <div class="form-group">
           <label for="image">Gambar</label>
           <input type="file" name="image" class="form-control" placeholder="Gambar">

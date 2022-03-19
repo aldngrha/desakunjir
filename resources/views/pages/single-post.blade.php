@@ -13,10 +13,10 @@ Post Detail
           <div class="col p-0">
             <nav>
               <ol class="breadcrumb">
-                <a href="index.html" class="breadcrumb-item">
+                <a href="{{ route('home') }}" class="breadcrumb-item">
                   <li>Home</li>
                 </a>
-                <a href="blog.html" class="breadcrumb-item">Informasi</a>
+                <a href="{{ route('informasi') }}" class="breadcrumb-item">Informasi</a>
                 <li class="breadcrumb-item active">Post</li>
               </ol>
             </nav>

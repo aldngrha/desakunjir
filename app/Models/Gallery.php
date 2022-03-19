@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Gallery extends Model
 {
-    use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ["image"];
+    protected $fillable = ["travel_packages_id", "image"];
 
     protected $hidden = [];
+
+    public function travel_package()
+    {
+        return $this->belongsTo(
+            TravelPackage::class,
+            "travel_packages_id",
+            "id"
+        );
+    }
 }

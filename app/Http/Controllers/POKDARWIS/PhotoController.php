@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\POKDARWIS\PhotoRequest;
 use App\Models\Photo;
 use App\Http\Controllers\Controller;
-use App\Models\TravelPackage;
 
 class PhotoController extends Controller
 {
@@ -18,8 +17,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $items = Photo::with(["travel_package"])->get();
-
+        $items = Photo::all();
         return view("pages.POKDARWIS.photo.index", [
             "items" => $items,
         ]);
@@ -32,10 +30,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        $travel_package = TravelPackage::all();
-        return view("pages.POKDARWIS.photo.create", [
-            "travel_packages" => $travel_package,
-        ]);
+        return view("pages.POKDARWIS.photo.create");
     }
 
     /**
@@ -49,7 +44,7 @@ class PhotoController extends Controller
         $data = $request->all();
         $data["image"] = $request
             ->file("image")
-            ->store("assets/gallery", "public");
+            ->store("assets/photo", "public");
 
         Photo::create($data);
         return redirect()->route("photo.index");
@@ -75,11 +70,9 @@ class PhotoController extends Controller
     public function edit($id)
     {
         $item = Photo::findOrFail($id);
-        $travel_package = TravelPackage::all();
 
         return view("pages.POKDARWIS.photo.edit", [
             "item" => $item,
-            "travel_packages" => $travel_package,
         ]);
     }
 
@@ -97,7 +90,8 @@ class PhotoController extends Controller
         $item = Photo::findOrFail($id);
         $data["image"] = $request
             ->file("image")
-            ->store("assets/gallery", "public");
+            ->store("assets/photo", "public");
+
         $item->update($data);
 
         return redirect()->route("photo.index");

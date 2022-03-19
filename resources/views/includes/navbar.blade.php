@@ -9,16 +9,16 @@
     <div class="collapse navbar-collapse" id="navb">
       <ul class="navbar-nav ml-auto mr-3">
         <li class="nav-item mx-md-2">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item mx-md-2">
-          <a class="nav-link" href="paket.html">Paket</a>
+          <a class="nav-link" href="{{ route('paket-wisata') }}">Paket</a>
         </li>
         <li class="nav-item mx-md-2">
-          <a class="nav-link" href="gallery.html">Galeri</a>
+          <a class="nav-link" href="{{ route('gallery-wisata') }}">Galeri</a>
         </li>
         <li class="nav-item mx-md-2">
-          <a class="nav-link" href="blog.html">Informasi</a>
+          <a class="nav-link" href="{{ route('informasi') }}">Informasi</a>
         </li>
         <li class="nav-item mx-md-2">
           <a class="nav-link" href="#tentang">Tentang</a>

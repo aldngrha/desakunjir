@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Gallery
+Header
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@ Gallery
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Photo Wisata</h1>
-    <a href="{{ route('gallery.create') }}" class="btn btn-primary btn-sm shadow-sm">
-      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Gallery</a>
+    <h1 class="h3 mb-0 text-gray-800">Header</h1>
+    <a href="{{ route('header.create') }}" class="btn btn-primary btn-sm shadow-sm">
+      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Header</a>
   </div>
 
   <div class="row">
@@ -21,7 +21,6 @@ Gallery
           <thead>
             <tr>
               <th>ID</th>
-              <th>Wisata</th>
               <th>Gambar</th>
               <th>Action</th>
             </tr>
@@ -30,15 +29,14 @@ Gallery
             @forelse ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->travel_package->title }}</td>
               <td>
                 <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
               </td>
               <td>
-                <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
+                <a href="{{ route('header.edit', $item->id) }}" class="btn btn-info">
                   <i class="fa fa-pencil-alt"></i>
                 </a>
-                <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('header.destroy', $item->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger">

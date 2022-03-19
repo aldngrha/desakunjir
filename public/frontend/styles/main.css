@@ -169,11 +169,10 @@ header .btn-start:hover {
 }
 
 .section-popular-content .section-popular-travel .card-travel-right {
-  min-width: 265px;
+  min-height: 318px;
   background: #fff;
   color: #fff;
-  padding: 20px;
-  padding-top: 100px;
+  padding-top: 230px;
   background-size: cover;
   margin-bottom: 20px;
   border-radius: 25px;
@@ -183,12 +182,24 @@ header .btn-start:hover {
   font-size: 14px;
   color: #fff;
   font-weight: bold;
+  position: relative;
+  z-index: 1;
+  padding-left: 20px;
 }
 
 .section-popular-content .section-popular-travel .card-travel-right .travel-location {
   font-size: 14px;
   color: #fff;
   font-weight: 200;
+  position: relative;
+  z-index: 1;
+  padding-left: 20px;
+}
+
+.section-popular-content .section-popular-travel .card-travel-right .travel-button {
+  padding-left: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .section-popular-content .section-popular-travel .card-travel-right .travel-button .btn-travel-details {
@@ -202,38 +213,16 @@ header .btn-start:hover {
   background-color: #ff9430;
 }
 
-.section-popular-content .section-popular-travel .card-travel {
-  min-height: 431px;
-  background: #fff;
-  color: #fff;
-  padding: 30px;
-  padding-top: 323px;
-  background-size: cover;
-  margin-bottom: 20px;
+.section-popular-content .section-popular-travel .card-travel-right::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
   border-radius: 25px;
-}
-
-.section-popular-content .section-popular-travel .card-travel .travel-country {
-  font-size: 14px;
-  color: #fff;
-  font-weight: bold;
-}
-
-.section-popular-content .section-popular-travel .card-travel .travel-location {
-  font-size: 14px;
-  color: #fff;
-  font-weight: 200;
-}
-
-.section-popular-content .section-popular-travel .card-travel .travel-button .btn-travel-details {
-  margin-top: 5px;
-  background-color: #ff7a00;
-  color: #fff;
-}
-
-.section-popular-content .section-popular-travel .card-travel .travel-button .btn-travel-details:hover {
-  color: #fff;
-  background-color: #ff9430;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .section-information-content {
@@ -503,37 +492,61 @@ header .btn-start:hover {
   color: #061771;
 }
 
-.section-paket-wisata .paket-wisata .card-travel {
-  min-height: 276px;
+.section-paket-wisata .paket-wisata .card-travel-right {
+  min-height: 318px;
   background: #fff;
   color: #fff;
-  padding: 30px;
-  padding-top: 160px;
+  padding-top: 230px;
   background-size: cover;
   margin-bottom: 20px;
   border-radius: 25px;
 }
 
-.section-paket-wisata .paket-wisata .card-travel .travel-country {
+.section-paket-wisata .paket-wisata .card-travel-right .travel-country {
   font-size: 14px;
   color: #fff;
   font-weight: bold;
+  position: relative;
+  z-index: 1;
+  padding-left: 20px;
 }
 
-.section-paket-wisata .paket-wisata .card-travel .travel-location {
+.section-paket-wisata .paket-wisata .card-travel-right .travel-location {
   font-size: 14px;
   color: #fff;
   font-weight: 200;
+  position: relative;
+  z-index: 1;
+  padding-left: 20px;
 }
 
-.section-paket-wisata .paket-wisata .card-travel .travel-button .btn-travel-details {
+.section-paket-wisata .paket-wisata .card-travel-right .travel-button {
+  padding-left: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-paket-wisata .paket-wisata .card-travel-right .travel-button .btn-travel-details {
+  margin-top: 5px;
   background-color: #ff7a00;
   color: #fff;
 }
 
-.section-paket-wisata .paket-wisata .card-travel .travel-button .btn-travel-details:hover {
+.section-paket-wisata .paket-wisata .card-travel-right .travel-button .btn-travel-details:hover {
   color: #fff;
   background-color: #ff9430;
+}
+
+.section-paket-wisata .paket-wisata .card-travel-right::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 25px;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 
 .section-blog {

@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Photo Wisata
+Photo
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@ Photo Wisata
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Photo Wisata</h1>
+    <h1 class="h3 mb-0 text-gray-800">Photo</h1>
     <a href="{{ route('photo.create') }}" class="btn btn-primary btn-sm shadow-sm">
-      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Photo Wisata</a>
+      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Photo</a>
   </div>
 
   <div class="row">
@@ -21,7 +21,6 @@ Photo Wisata
           <thead>
             <tr>
               <th>ID</th>
-              <th>Wisata</th>
               <th>Gambar</th>
               <th>Action</th>
             </tr>
@@ -30,7 +29,6 @@ Photo Wisata
             @forelse ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->travel_package->title }}</td>
               <td>
                 <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
               </td>
