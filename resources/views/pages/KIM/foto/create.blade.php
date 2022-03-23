@@ -1,7 +1,7 @@
 @extends('layouts.KIM.admin')
 
 @section('title')
-Tambah Informasi
+Tambah Photo Wisata
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Tambah Informasi
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Tambah Informasi</h1>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Photo Artikel</h1>
   </div>
 
   @if ($errors->any())
@@ -24,19 +24,22 @@ Tambah Informasi
 
   <div class="card shadow">
     <div class="card-body">
-      <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('foto.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-          <label for="title">Judul</label>
-          <input type="text" class="form-control" name="title" placeholder="Judul informasi" value="{{ old('title') }}">
+          <label for="posts_id">Artikel</label>
+          <select name="posts_id" required class="form-control">
+            <option value="">Pilih Artikel</option>
+            @foreach ($posts as $post)
+            <option value="{{ $post->id }}">
+              {{ $post->title }}
+            </option>
+            @endforeach
+          </select>
         </div>
         <div class="form-group">
-          <label for="about">Informasi</label>
-          <textarea name="about" class="ckeditor form-control" rows="10">{{ old('about') }}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="writer">Penulis</label>
-          <input type="text" class="form-control" name="writer" placeholder="Penulis" value="{{ old('writer') }}">
+          <label for="image">Gambar</label>
+          <input type="file" name="image" class="form-control" placeholder="Gambar">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
       </form>

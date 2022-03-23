@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\POKDARWIS;
+namespace App\Http\Requests\KIM;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TransactionRequest extends FormRequest
+class FotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class TransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            "transaction_status" =>
-                "required|string|in:IN_CART,PENDING,SUCCESS,FAILED",
+            "posts_id" => "required|integer|exists:posts,id",
+            "image" => "required|image",
         ];
     }
 }

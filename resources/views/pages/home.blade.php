@@ -75,32 +75,22 @@ Desa Kunjir
     <section class="section-information-content" id="popularContent">
         <div class="container">
             <div class="section-information-image row">
+                @if ($post->count())
                 <div class="col-sm-6 col-md-4 col-lg-6">
-                    <div class="card-information d-flex flex-column" style="background-image: url('{{ url("frontend/images/informasi.jpg") }}')">
+                    <div class="card-information d-flex flex-column"
+                        style="background-image: url('{{ Storage::url($post[0]->photos->first()->image) }}')">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-6">
                     <div class="blog">Blog</div>
-                    <div class="blog-title">Wisata yang ada di Desa Kunjir</div>
-                    <div class="blog-description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Distinctio, et nesciunt. Porro minima nisi, iste vitae
-                        voluptatum repudiandae magnam est error aperiam suscipit
-                        architecto eum excepturi commodi veritatis repellendus dolorem.
-                        Totam nulla commodi aspernatur, incidunt itaque sapiente nostrum
-                        accusamus numquam eius at distinctio quod dolor consectetur eos
-                        facilis omnis repellendus similique veniam excepturi aut fugiat
-                        ab porro praesentium voluptate? Qui. Mollitia tempore cum amet
-                        consectetur expedita nobis exercitationem neque itaque, harum
-                        inventore magni accusamus vel, deleniti est dolor minus placeat
-                        alias officia dicta veritatis corrupti. Tenetur, molestiae
-                        natus? Dolorem, aliquam? Ipsa maiores veritatis voluptas rem?
-                        Tenetur, quaerat laborum? Fuga culpa quibusdam asperiores? Ipsa
-                        odit enim quisquam
+                    <div class="blog-title">{{ $post[0]->title }}</div>
+                    <div class="blog-description">{!! substr($post[0]->about,0,799) !!}
                     </div>
-                    <a href="single-post.html" class="btn btn-lihat-detail btn-block px-4 mt-4">
+                    <a href="{{ route('single-post', $post[0]->slug) }}"
+                        class="btn btn-lihat-detail btn-block px-4 mt-4">
                         Lihat Artikel
                     </a>
+                    @endif
                 </div>
             </div>
         </div>

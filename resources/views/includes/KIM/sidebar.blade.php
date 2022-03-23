@@ -32,6 +32,12 @@
       <span>Informasi</span></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('foto.index') }}">
+      <i class="fas fa-fw fa-image"></i>
+      <span>Photo</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block" />
 

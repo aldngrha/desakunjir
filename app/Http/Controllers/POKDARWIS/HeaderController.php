@@ -45,7 +45,7 @@ class HeaderController extends Controller
         $data = $request->all();
         $data["image"] = $request
             ->file("image")
-            ->store("assets/gallery", "public");
+            ->store("assets/header", "public");
 
         Header::create($data);
         return redirect()->route("header.index");
@@ -89,7 +89,7 @@ class HeaderController extends Controller
         $data = $request->all();
         $data["image"] = $request
             ->file("image")
-            ->store("assets/gallery", "public");
+            ->store("assets/header", "public");
 
         $item = Header::findOrFail($id);
         $item->update($data);

@@ -25,8 +25,17 @@ Checkout
         <div class="row">
           <div class="col-lg-8 pl-lg-0">
             <div class="card card-details">
+              @if($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+              @endif
               <h1>Homestay Booking</h1>
-              <p>Trip to Pantai Mahoni, Lampung Selatan</p>
+              <p>Trip to {{ $item->travel_package->title }}, {{ $item->travel_package->loaction }}</p>
               <h5 class="mt-3 mb-3">Informasi Pemesan</h5>
               <form>
                 <div class="form-group">
@@ -94,12 +103,12 @@ Checkout
               </div>
             </div>
             <div class="join-container">
-              <a href="success.html" class="btn btn-block btn-join-now mt-3 py-2">
+              <a href="{{ route(" checkout-success", $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
                 Saya sudah melakukan pembayaran
               </a>
             </div>
             <div class="text-center mt-3">
-              <a href="details.html" class="text-muted">Batalkan pesanan</a>
+              <a href="{{ route('detail', $item->travel_package->slug) }}" class="text-muted">Batalkan pesanan</a>
             </div>
           </div>
         </div>

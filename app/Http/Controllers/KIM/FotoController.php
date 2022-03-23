@@ -4,11 +4,12 @@ namespace App\Http\Controllers\KIM;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\KIM\PostRequest;
+use App\Http\Requests\KIM\FotoRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Foto;
 use App\Models\Post;
 
-class PostController extends Controller
+class FotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $items = Post::all();
+        $items = Foto::with(["post"])->get();
 
-        return view("pages.KIM.post.index", [
+        return view("pages.KIM.foto.index", [
             "items" => $items,
         ]);
     }
@@ -31,7 +32,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("pages.KIM.post.create");
+        $posts = Post::all();
+        return view("pages.KIM.foto.create", [
+            "posts" => $posts,
+        ]);
     }
 
     /**
@@ -40,13 +44,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(FotoRequest $request)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/foto", "public");
 
-        Post::create($data);
-        return redirect()->route("post.index");
+        Foto::create($data);
+        return redirect()->route("foto.index");
     }
 
     /**
@@ -68,10 +74,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $item = Post::findOrFail($id);
+        $item = Foto::findOrFail($id);
+        $posts = Post::all();
 
-        return view("pages.KIM.post.edit", [
+        return view("pages.KIM.foto.edit", [
             "item" => $item,
+            "posts" => $posts,
         ]);
     }
 
@@ -82,15 +90,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, $id)
+    public function update(FotoRequest $request, $id)
     {
         $data = $request->all();
-        $data["slug"] = Str::slug($request->title);
 
-        $item = Post::findOrFail($id);
+        $item = Foto::findOrFail($id);
+        $data["image"] = $request
+            ->file("image")
+            ->store("assets/foto", "public");
         $item->update($data);
 
-        return redirect()->route("post.index");
+        return redirect()->route("foto.index");
     }
 
     /**
@@ -101,9 +111,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $item = Post::findOrFail($id);
+        $item = Foto::findOrFail($id);
         $item->delete();
 
-        return redirect()->route("post.index");
+        return redirect()->route("foto.index");
     }
 }

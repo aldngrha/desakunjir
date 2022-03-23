@@ -25,10 +25,8 @@ class PostRequest extends FormRequest
     {
         return [
             "title" => "required|max:255",
-            "image" => "required|image",
             "about" => "required",
             "writer" => "required|max:255",
-            "date" => "required|date",
         ];
     }
 }

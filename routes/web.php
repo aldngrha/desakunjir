@@ -41,11 +41,11 @@ Route::get("/gallery", [GalleryWisataController::class, "index"])->name(
     "gallery-wisata"
 );
 
-Route::get("/single-post", [SinglePostController::class, "index"])->name(
+Route::get("/single-post/{slug}", [SinglePostController::class, "index"])->name(
     "single-post"
 );
 
-Route::get("/checkout/{id}", [CheckoutController::class, "process"])
+Route::post("/checkout/{id}", [CheckoutController::class, "process"])
     ->name("checkout_process")
     ->middleware(["auth", "verified"]);
 
@@ -53,18 +53,11 @@ Route::get("/checkout/{id}", [CheckoutController::class, "index"])
     ->name("checkout")
     ->middleware(["auth", "verified"]);
 
-Route::get("/checkout/create/{detail_id}", [
+Route::post("/checkout/create/{detail_id}", [
     CheckoutController::class,
     "create",
 ])
     ->name("checkout-create")
-    ->middleware(["auth", "verified"]);
-
-Route::get("/checkout/remove/{detail_id}", [
-    CheckoutController::class,
-    "remove",
-])
-    ->name("checkout-remove")
     ->middleware(["auth", "verified"]);
 
 Route::get("/checkout/confirm/{id}", [
@@ -80,6 +73,7 @@ Route::prefix("kim")
     ->group(function () {
         Route::get("/", [KimController::class, "index"])->name("kim");
         Route::resource("post", "PostController");
+        Route::resource("foto", "FotoController");
     });
 
 Route::prefix("pokdarwis")

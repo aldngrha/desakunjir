@@ -1,7 +1,7 @@
 @extends('layouts.KIM.admin')
 
 @section('title')
-Informasi
+Gallery
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@ Informasi
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Informasi</h1>
-    <a href="{{ route('post.create') }}" class="btn btn-primary btn-sm shadow-sm">
-      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Informasi</a>
+    <h1 class="h3 mb-0 text-gray-800">Photo Artikel</h1>
+    <a href="{{ route('foto.create') }}" class="btn btn-primary btn-sm shadow-sm">
+      <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Photo</a>
   </div>
 
   <div class="row">
@@ -21,8 +21,8 @@ Informasi
           <thead>
             <tr>
               <th>ID</th>
-              <th>Title</th>
-              <th>Penulis</th>
+              <th>Artikel</th>
+              <th>Gambar</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -30,13 +30,15 @@ Informasi
             @forelse ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->title }}</td>
-              <td>{{ $item->writer }}</td>
+              <td>{{ $item->post->title }}</td>
               <td>
-                <a href="{{ route('post.edit', $item->id) }}" class="btn btn-info">
+                <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
+              </td>
+              <td>
+                <a href="{{ route('foto.edit', $item->id) }}" class="btn btn-info">
                   <i class="fa fa-pencil-alt"></i>
                 </a>
-                <form action="{{ route('post.destroy', $item->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('foto.destroy', $item->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger">

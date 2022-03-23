@@ -33,15 +33,17 @@ Transaksi
               <td>{{ $item->travel_package->title }}</td>
               <td>{{ $item->user->name }}</td>
               <td>{{ $item->transaction_total }}</td>
-              <td>@if ($item->transaction_status == "PENDING")
-                <span class="badge badge-info">
-                  @elseif ($item->transaction_status == "SUCCESS")
-                  <span class="badge badge-success">
-                    @elseif ($item->transaction_status == "FAILED")
-                    <span class="badge badge-danger">
-                    </span>
-                    @endif
-                    {{ $item->transaction_status }}
+              <td>@if ($item->transaction_status == "IN_CART")
+                <span class="badge badge-secondary">
+                  @elseif ($item->transaction_status == "PENDING")
+                  <span class="badge badge-info">
+                    @elseif ($item->transaction_status == "SUCCESS")
+                    <span class="badge badge-success">
+                      @elseif ($item->transaction_status == "FAILED")
+                      <span class="badge badge-danger">
+                      </span>
+                      @endif
+                      {{ $item->transaction_status }}
               </td>
               <td>
                 <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">

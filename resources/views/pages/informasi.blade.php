@@ -20,87 +20,29 @@ Informasi Wisata
         </div>
         <div class="row">
           <div class="col-lg-12">
+            @foreach ($posts as $post)
             <div class="card card-blog">
               <div class="section-information-image row">
                 <div class="col-sm-6 col-md-4 col-lg-6">
                   <div class="card-information d-flex flex-column"
-                    style="background-image: url('frontend/images/informasi.jpg')"></div>
+                    style="background-image: url('{{ $post->photos->count() ? Storage::url($post->photos->first()->image) : '' }}')">
+                  </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-6">
                   <div class="blog">Blog</div>
                   <div class="blog-title">
-                    Wisata yang ada di Desa Kunjir
+                    {{ $post->title }}
                   </div>
                   <div class="blog-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Distinctio, et nesciunt. Porro minima nisi, iste vitae
-                    voluptatum repudiandae magnam est error aperiam suscipit
-                    architecto eum excepturi commodi veritatis repellendus
-                    dolorem. Totam nulla commodi aspernatur. Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Impedit
-                    maxime sed iste aperiam. Quidem tempore quisquam
-                    repellendus id?
+                    {!!substr($post->about, 0, 300)!!}
                   </div>
-                  <a href="single-post.html" class="btn btn-lihat-detail px-5 mt-4 ml-2 pb-sm-2">
+                  <a href="{{ route('single-post', $post->slug) }}" class="btn btn-lihat-detail px-5 mt-4 ml-2 pb-sm-2">
                     Lihat Artikel
                   </a>
                 </div>
               </div>
             </div>
-            <div class="card card-blog">
-              <div class="section-information-image row">
-                <div class="col-sm-6 col-md-4 col-lg-6">
-                  <div class="card-information d-flex flex-column"
-                    style="background-image: url('frontend/images/informasi.jpg')"></div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-6">
-                  <div class="blog">Blog</div>
-                  <div class="blog-title">
-                    Wisata yang ada di Desa Kunjir
-                  </div>
-                  <div class="blog-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Distinctio, et nesciunt. Porro minima nisi, iste vitae
-                    voluptatum repudiandae magnam est error aperiam suscipit
-                    architecto eum excepturi commodi veritatis repellendus
-                    dolorem. Totam nulla commodi aspernatur. Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Impedit
-                    maxime sed iste aperiam. Quidem tempore quisquam
-                    repellendus id?
-                  </div>
-                  <a href="single-post.html" class="btn btn-lihat-detail px-5 mt-4 ml-2 pb-sm-2">
-                    Lihat Artikel
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card card-blog">
-              <div class="section-information-image row">
-                <div class="col-sm-6 col-md-4 col-lg-6">
-                  <div class="card-information d-flex flex-column"
-                    style="background-image: url('frontend/images/informasi.jpg')"></div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-6">
-                  <div class="blog">Blog</div>
-                  <div class="blog-title">
-                    Wisata yang ada di Desa Kunjir
-                  </div>
-                  <div class="blog-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Distinctio, et nesciunt. Porro minima nisi, iste vitae
-                    voluptatum repudiandae magnam est error aperiam suscipit
-                    architecto eum excepturi commodi veritatis repellendus
-                    dolorem. Totam nulla commodi aspernatur. Lorem ipsum
-                    dolor sit amet consectetur, adipisicing elit. Impedit
-                    maxime sed iste aperiam. Quidem tempore quisquam
-                    repellendus id?
-                  </div>
-                  <a href="single-post.html" class="btn btn-lihat-detail px-5 mt-4 ml-2 pb-sm-2">
-                    Lihat Artikel
-                  </a>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
