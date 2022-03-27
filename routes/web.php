@@ -53,17 +53,17 @@ Route::get("/checkout/{id}", [CheckoutController::class, "index"])
     ->name("checkout")
     ->middleware(["auth", "verified"]);
 
-Route::post("/checkout/create/{detail_id}", [
-    CheckoutController::class,
-    "create",
-])
-    ->name("checkout-create")
-    ->middleware(["auth", "verified"]);
+// Route::post("/checkout/create/{detail_id}", [
+//     CheckoutController::class,
+//     "create",
+// ])
+//     ->name("checkout-create")
+//     ->middleware(["auth", "verified"]);
 
-Route::get("/checkout/confirm/{id}", [
-    CheckoutController::class,
-    "success",
-])->name("checkout-success");
+// Route::get("/checkout/confirm/{id}", [
+//     CheckoutController::class,
+//     "success",
+// ])->name("checkout-success");
 
 // Admin Route
 
@@ -88,7 +88,6 @@ Route::prefix("pokdarwis")
         Route::resource("travel-package", "TravelPackageController");
         Route::resource("photo", "PhotoController");
         Route::resource("gallery", "GalleryController");
-        Route::resource("owner", "OwnerController");
         Route::resource("transaction", "TransactionController");
     });
 

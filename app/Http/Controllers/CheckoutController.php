@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TravelPackage;
@@ -18,6 +19,7 @@ class CheckoutController extends Controller
             "travel_package",
             "user",
         ])->findOrFail($id);
+
         return view("pages.checkout", [
             "item" => $item,
         ]);
@@ -43,37 +45,32 @@ class CheckoutController extends Controller
         return redirect()->route("checkout", $transaction->id);
     }
 
-    public function create(Request $request, $id)
-    {
-        $request->validate([
-            "name" => "required|string",
-            "email" => "required|string",
-            "number" => "required|string",
-        ]);
+    // public function create(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         "name" => "required|string",
+    //         "email" => "required|string",
+    //         "number" => "required|string",
+    //     ]);
 
-        $data = $request->all();
-        $data["transactions_id"] = $id;
+    //     $data = $request->all();
+    //     $data["transactions_id"] = $id;
 
-        TransactionDetail::create($data);
+    //     TransactionDetail::create($data);
 
-        $transaction = Transaction::with(["travel_package"])->find($id);
+    //     $transaction = Transaction::with(["travel_package"])->find($id);
 
-        $transaction->transaction_total += $transaction->travel_package->price;
+    //     $transaction->transaction_total += $transaction->travel_package->price;
 
-        $transaction->save();
+    //     $transaction->save();
 
-        return redirect()->route("checkout", $id);
-    }
+    //     return redirect()->route("checkout", $id);
+    // }
 
-    public function remove(Request $request, $id)
-    {
-        return view("pages.checkout");
-    }
-
-    public function success(Request $request, $id)
-    {
-        $transaction = Transaction::findOrFail($id);
-        $transaction->transaction_status = "PENDING";
-        return view("pages.success");
-    }
+    // public function success(Request $request, $id)
+    // {
+    //     $transaction = Transaction::findOrFail($id);
+    //     $transaction->transaction_status = "PENDING";
+    //     return view("pages.success");
+    // }
 }

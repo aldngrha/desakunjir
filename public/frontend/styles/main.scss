@@ -70,6 +70,74 @@ body {
         }
     }
 }
+
+.card-reset {
+    background: #fff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 25px;
+    width: 400px;
+    margin: auto;
+    .card-body {
+    }
+
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+
+        .text-primary {
+            color: #061771 !important;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .checkbox {
+            font-weight: 400;
+        }
+
+        .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            z-index: 2;
+        }
+
+        input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .btn-login {
+            margin-bottom: 10px;
+            color: #fff;
+            background-color: #061771;
+            &:hover {
+                background-color: #0f2aad;
+                color: #fff;
+            }
+        }
+
+        p {
+            .register {
+                color: #061771;
+            }
+        }
+    }
+}
 // Navbar
 
 .navbar-brand {

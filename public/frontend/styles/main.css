@@ -71,6 +71,72 @@ body {
   color: #061771;
 }
 
+.card-reset {
+  background: #fff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 25px;
+  width: 400px;
+  margin: auto;
+}
+
+.card-reset .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.card-reset .form-signin .text-primary {
+  color: #061771 !important;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.card-reset .form-signin .checkbox {
+  font-weight: 400;
+}
+
+.card-reset .form-signin .form-control {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.card-reset .form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.card-reset .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.card-reset .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card-reset .form-signin .btn-login {
+  margin-bottom: 10px;
+  color: #fff;
+  background-color: #061771;
+}
+
+.card-reset .form-signin .btn-login:hover {
+  background-color: #0f2aad;
+  color: #fff;
+}
+
+.card-reset .form-signin p .register {
+  color: #061771;
+}
+
 .navbar-brand {
   z-index: 1;
   position: relative;

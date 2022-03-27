@@ -47,6 +47,7 @@ Transaksi
         </tr>
         <tr>
           <table class="table table-bordered">
+            <p>Data Pembeli</p>
             <tr>
               <th>ID</th>
               <th>Nama Lengkap</th>

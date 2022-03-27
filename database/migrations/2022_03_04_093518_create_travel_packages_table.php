@@ -25,6 +25,10 @@ class CreateTravelPackagesTable extends Migration
             $table->string("duration");
             $table->integer("price");
             $table->string("map");
+            $table->string("owner_name");
+            $table->string("account_number");
+            $table->string("bank");
+            $table->string("whatsapp_number");
             $table->softDeletes();
             $table->timestamps();
         });

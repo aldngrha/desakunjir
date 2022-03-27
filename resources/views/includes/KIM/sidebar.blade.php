@@ -14,7 +14,7 @@
   <hr class="sidebar-divider my-0" />
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
+  <li class="nav-item {{ request()->is('kim') ? 'active' : '' }}">
     <a class="nav-link" href={{ route('kim') }}>
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
@@ -26,13 +26,13 @@
   <!-- Heading -->
   <div class="sidebar-heading">Interface</div>
 
-  <li class="nav-item">
+  <li class="nav-item {{ request()->is('kim/post*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('post.index') }}">
       <i class="fas fa-fw fa-book"></i>
       <span>Informasi</span></a>
   </li>
 
-  <li class="nav-item">
+  <li class="nav-item {{ request()->is('kim/foto*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('foto.index') }}">
       <i class="fas fa-fw fa-image"></i>
       <span>Photo</span></a>

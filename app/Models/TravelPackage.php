@@ -21,6 +21,10 @@ class TravelPackage extends Model
         "duration",
         "price",
         "map",
+        "owner_name",
+        "account_number",
+        "bank",
+        "whatsapp_number",
     ];
 
     protected $hidden = [];
@@ -28,10 +32,5 @@ class TravelPackage extends Model
     public function galleries()
     {
         return $this->hasMany(Gallery::class, "travel_packages_id", "id");
-    }
-
-    public function owners()
-    {
-        return $this->hasMany(Owner::class, "travel_packages_id", "id");
     }
 }

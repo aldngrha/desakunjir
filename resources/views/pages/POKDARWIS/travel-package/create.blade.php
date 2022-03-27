@@ -27,7 +27,7 @@ Tambah Paket Travel
       <form action="{{ route('travel-package.store') }}" method="POST">
         @csrf
         <div class="form-group">
-          <label for="title">Nama</label>
+          <label for="title">Nama Wisata</label>
           <input type="text" class="form-control" name="title" placeholder="Nama tempat wisata"
             value="{{ old('title') }}">
         </div>
@@ -63,6 +63,25 @@ Tambah Paket Travel
         <div class="form-group">
           <label for="map">Link Lokasi</label>
           <input type="text" class="form-control" name="map" placeholder="Link lokasi" value="{{ old('map') }}">
+        </div>
+        <div class="form-group">
+          <label for="owner_name">Nama Lengkap</label>
+          <input type="text" class="form-control" name="owner_name" placeholder="Nama Lengkap yang ada di rekening"
+            value="{{ old('owner_name') }}">
+        </div>
+        <div class="form-group">
+          <label for="account_number">Nomor Rekening</label>
+          <input type="text" class="form-control" name="account_number" placeholder="Nomor Rekening"
+            value="{{ old('account_number') }}">
+        </div>
+        <div class="form-group">
+          <label for="bank">Bank</label>
+          <input type="text" class="form-control" name="bank" placeholder="Bank" value="{{ old('bank') }}">
+        </div>
+        <div class="form-group">
+          <label for="whatsapp_number">Nomor Whatsaapp</label>
+          <input type="text" class="form-control" name="whatsapp_number"
+            placeholder="Isi dengan awalan 8. contoh 890918281" value="{{ old('whatsapp_number') }}">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
       </form>

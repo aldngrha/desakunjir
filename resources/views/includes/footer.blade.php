@@ -22,10 +22,10 @@
       <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
         <h6 class="title-footer">Link</h6>
         <ul class="list-unstyled">
-          <li><a href="">Home</a></li>
-          <li><a href="">Paket</a></li>
-          <li><a href="">Galeri</a></li>
-          <li><a href="">Informasi</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
+          <li><a href="{{ route('paket-wisata') }}">Paket</a></li>
+          <li><a href="{{ route('gallery-wisata') }}">Galeri</a></li>
+          <li><a href="{{ route('informasi') }}">Informasi</a></li>
         </ul>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-2 mt-3">

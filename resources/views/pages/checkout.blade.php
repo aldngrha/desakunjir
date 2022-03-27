@@ -35,7 +35,7 @@ Checkout
               </div>
               @endif
               <h1>Homestay Booking</h1>
-              <p>Trip to {{ $item->travel_package->title }}, {{ $item->travel_package->loaction }}</p>
+              <p>Trip to {{ $item->travel_package->title }}, {{ $item->travel_package->location }}</p>
               <h5 class="mt-3 mb-3">Informasi Pemesan</h5>
               <form>
                 <div class="form-group">
@@ -53,7 +53,7 @@ Checkout
                 <h5 class="mt-3 mb-3">Transfer</h5>
                 <p class="tf">
                   Kirim bukti transfer ke
-                  <a href="wa.me/62" class="whatsapp">Whatsapp
+                  <a href="wa.me/62{{ $item->travel_package->whatsapp_number }}" class="whatsapp">Whatsapp
                     <i class="fa fa-whatsapp"></i>
                   </a>
                 </p>
@@ -91,11 +91,11 @@ Checkout
                 <div class="bank-item pb-3">
                   <i class="fa fa-wallet fa-2x bank-image"></i>
                   <div class="description">
-                    <h3>Ayu Febriani Bachtiar</h3>
+                    <h3>{{ $item->travel_package->owner_name }}</h3>
                     <p>
-                      0821 7761 8890
+                      {{ $item->travel_package->account_number }}
                       <br />
-                      Bank Central Asia
+                      {{ $item->travel_package->bank }}
                     </p>
                   </div>
                   <div class="clearfix"></div>
@@ -103,7 +103,7 @@ Checkout
               </div>
             </div>
             <div class="join-container">
-              <a href="{{ route(" checkout-success", $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
+              <a href="" class="btn btn-block btn-join-now mt-3 py-2">
                 Saya sudah melakukan pembayaran
               </a>
             </div>

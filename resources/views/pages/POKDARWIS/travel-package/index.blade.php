@@ -21,7 +21,8 @@ Dashboard
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nama</th>
+              <th>Nama Wisata</th>
+              <th>Nama Pemilik</th>
               <th>Lokasi</th>
               <th>Hiburan</th>
               <th>Durasi</th>
@@ -34,6 +35,7 @@ Dashboard
             <tr>
               <td>{{ $item->id }}</td>
               <td>{{ $item->title }}</td>
+              <td>{{ $item->owner_name }}</td>
               <td>{{ $item->location }}</td>
               <td>{{ $item->hiburan }}</td>
               <td>{{ $item->duration }}</td>

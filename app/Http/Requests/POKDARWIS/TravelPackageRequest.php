@@ -33,6 +33,10 @@ class TravelPackageRequest extends FormRequest
             "duration" => "required|max:255",
             "price" => "required|integer",
             "map" => "required",
+            "owner_name" => "required|max:255",
+            "account_number" => "required|max:255",
+            "bank" => "required|max:255",
+            "whatsapp_number" => "required|max:255",
         ];
     }
 }

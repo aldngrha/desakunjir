@@ -44,14 +44,14 @@ Login
         }}>
 
       <label class="form-check-label text-muted" for="remember">
-        {{ __('Remember Me') }}
+        {{ __('Ingat Saya') }}
       </label>
     </div>
 
     <div class="mb-3">
       @if (Route::has('password.request'))
-      <a href="{{ route('password.request') }}">
-        {{ __('Forgot Your Password?') }}
+      <a href="{{ route('password.request') }}" class="register">
+        {{ __('Lupa Password?') }}
       </a>
       @endif
     </div>
@@ -59,7 +59,7 @@ Login
       {{ __('Login') }}
     </button>
 
-    <p class="text-muted">Belum punya akun? <a href="{{ route('register') }}" class="register">Register</a></p>
+    <p class="text-muted">Belum punya akun? <a href="{{ route('register') }}" class="register">Daftar</a></p>
     <p class="mt-5 mb-3 text-muted text-center">&copy; Desa Kunjir</p>
   </form>
 </div>
