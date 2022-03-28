@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Informasi Wisata
+- Informasi Wisata
 @endsection
 
 @section('content')

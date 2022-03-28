@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Post Detail
+- {{ $post->slug }}
 @endsection
 
 @section('content')

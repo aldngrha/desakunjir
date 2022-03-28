@@ -1,7 +1,7 @@
 @extends('layouts.detail')
 
 @section('title')
-Details
+{{ $item->title }}
 @endsection
 
 @section('content')

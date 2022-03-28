@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Gallery Wisata
+- Gallery Wisata
 @endsection
 
 @section('content')

@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('title')
-Desa Kunjir
-@endsection
-
 @section('content')
 <header class="text-center">
     <h1>

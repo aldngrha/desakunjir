@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\GalleryWisataController;
@@ -33,6 +34,17 @@ Route::get("/detail/{slug}", [DetailController::class, "index"])->name(
     "detail"
 );
 
+Route::group(["middleware" => "auth"], function () {
+    Route::get("/change-password", [
+        ChangePasswordController::class,
+        "showChangePasswordGet",
+    ])->name("changePasswordGet");
+    Route::post("/change-password", [
+        ChangePasswordController::class,
+        "changePasswordPost",
+    ])->name("changePasswordPost");
+});
+
 Route::get("/informasi", [InformasiController::class, "index"])->name(
     "informasi"
 );
@@ -53,18 +65,6 @@ Route::get("/checkout/{id}", [CheckoutController::class, "index"])
     ->name("checkout")
     ->middleware(["auth", "verified"]);
 
-// Route::post("/checkout/create/{detail_id}", [
-//     CheckoutController::class,
-//     "create",
-// ])
-//     ->name("checkout-create")
-//     ->middleware(["auth", "verified"]);
-
-// Route::get("/checkout/confirm/{id}", [
-//     CheckoutController::class,
-//     "success",
-// ])->name("checkout-success");
-
 // Admin Route
 
 Route::prefix("kim")
@@ -83,7 +83,6 @@ Route::prefix("pokdarwis")
         Route::get("/", [PokdarwisController::class, "index"])->name(
             "pokdarwis"
         );
-
         Route::resource("header", "HeaderController");
         Route::resource("travel-package", "TravelPackageController");
         Route::resource("photo", "PhotoController");

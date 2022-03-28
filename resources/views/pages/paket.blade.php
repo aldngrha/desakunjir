@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Paket Wisata
+- Paket Wisata
 @endsection
 @section('content')
 <main>

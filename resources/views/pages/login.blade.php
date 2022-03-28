@@ -1,6 +1,6 @@
 @extends('layouts.login')
 @section('title')
-Login
+- Login
 @endsection
 
 @section('content')
