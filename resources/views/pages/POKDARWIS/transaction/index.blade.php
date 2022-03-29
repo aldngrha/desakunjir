@@ -32,7 +32,7 @@ Transaksi
               <td>{{ $item->id }}</td>
               <td>{{ $item->travel_package->title }}</td>
               <td>{{ $item->user->name }}</td>
-              <td>{{ $item->transaction_total }}</td>
+              <td>Rp {{ number_format($item->transaction_total,0,".",".") }}</td>
               <td>@if ($item->transaction_status == "IN_CART")
                 <span class="badge badge-secondary">
                   @elseif ($item->transaction_status == "PENDING")

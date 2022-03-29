@@ -39,7 +39,7 @@ Transaksi
         </tr>
         <tr>
           <th>Total Transaksi</th>
-          <td>Rp. {{ number_format($item->transaction_total, 0, ",", ".") }}</td>
+          <td>Rp {{ number_format($item->transaction_total, 0, ",", ".") }}</td>
         </tr>
         <tr>
           <th>Transaksi Status</th>

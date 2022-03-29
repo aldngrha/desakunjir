@@ -13,10 +13,10 @@ Checkout
           <div class="col p-0">
             <nav>
               <ol class="breadcrumb">
-                <a href="index.html" class="breadcrumb-item">
+                <a href="{{ route('paket-wisata') }}" class="breadcrumb-item">
                   <li>Paket Wisata</li>
                 </a>
-                <a href="" class="breadcrumb-item">Details</a>
+                <a href="{{ route('detail', $item->travel_package->slug) }}" class="breadcrumb-item">Details</a>
                 <li class="breadcrumb-item active">Checkout</li>
               </ol>
             </nav>
@@ -37,18 +37,18 @@ Checkout
               <h1>Homestay Booking</h1>
               <p>Trip to {{ $item->travel_package->title }}, {{ $item->travel_package->location }}</p>
               <h5 class="mt-3 mb-3">Informasi Pemesan</h5>
-              <form>
+              <form method="POST" action="{{ route('checkout-create', $item->id) }}">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Nama Lengkap</label>
-                  <input type="text" class="form-control" required />
+                  <input type="text" class="form-control" required placeholder="Nama lengkap" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Alamat Email</label>
-                  <input type="email" class="form-control" required />
+                  <input type="email" class="form-control" required placeholder="Alamat email" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">No. Hp</label>
-                  <input type="text" class="form-control" required />
+                  <input type="text" class="form-control" required placeholder="Nomor handphone atau whatsapp" />
                 </div>
                 <h5 class="mt-3 mb-3">Transfer</h5>
                 <p class="tf">
@@ -66,19 +66,22 @@ Checkout
               <table class="trip-information">
                 <tr>
                   <th width="50%">Durasi</th>
-                  <td width="50%" class="text-right">2 Malam</td>
+                  <td width="50%" class="text-right">{{ $item->travel_package->duration }}</td>
                 </tr>
                 <tr>
                   <th width="50%">Harga</th>
-                  <td width="50%" class="text-right">Rp200.000</td>
+                  <td width="50%" class="text-right">{{ number_format($item->travel_package->price,0,".",".") }}</td>
                 </tr>
                 <tr>
                   <th width="50%">Pajak</th>
-                  <td width="50%" class="text-right">10%</td>
+                  <td width="50%" class="text-right">5% (Rp. {{
+                    number_format($item->travel_package->price * 5 / 100,0,".",".")}})</td>
                 </tr>
                 <tr>
                   <th width="50%">Total Bayar</th>
-                  <td width="50%" class="text-right total">Rp200.000</td>
+                  <td width="50%" class="text-right total">Rp. {{
+                    number_format(($item->travel_package->price * 5) / 100 + ($item->travel_package->price),0,".",".")
+                    }}</td>
                 </tr>
               </table>
               <hr />
@@ -103,7 +106,7 @@ Checkout
               </div>
             </div>
             <div class="join-container">
-              <a href="" class="btn btn-block btn-join-now mt-3 py-2">
+              <a href="{{ route('checkout-success', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
                 Saya sudah melakukan pembayaran
               </a>
             </div>

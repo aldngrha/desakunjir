@@ -49,6 +49,8 @@
           {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu">
+          <a href="{{ route('changePasswordGet') }}" class="dropdown-item">Data Diri</a>
+          <div class="dropdown-divider"></div>
           <a href="{{ route('changePasswordGet') }}" class="dropdown-item">Ubah Kata Sandi</a>
         </div>
       </li>

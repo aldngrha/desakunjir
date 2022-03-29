@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Owner;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TravelPackage;
@@ -31,46 +30,54 @@ class CheckoutController extends Controller
         $transaction = Transaction::create([
             "travel_packages_id" => $id,
             "users_id" => Auth::user()->id,
-            "transaction_total" => $travel_package->price,
+            "transaction_total" =>
+                ($travel_package->price * 5) / 100 + $travel_package->price,
             "transaction_status" => "IN_CART",
         ]);
 
-        // TransactionDetail::create([
-        //     "transaction_id" => $transaction->id,
-        //     "name" => ,
-        //     "email",
-        //     "number",
-        // ]);
+        TransactionDetail::create([
+            "transactions_id" => $transaction->id,
+            "name" => "name",
+            "email" => "email",
+            "number" => "number",
+        ]);
 
         return redirect()->route("checkout", $transaction->id);
     }
 
-    // public function create(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         "name" => "required|string",
-    //         "email" => "required|string",
-    //         "number" => "required|string",
-    //     ]);
+    public function create(Request $request, $id)
+    {
+        $request->validate([
+            "name" => "required|string",
+            "email" => "required|string|exists:users,email",
+            "number" => "required|string",
+        ]);
 
-    //     $data = $request->all();
-    //     $data["transactions_id"] = $id;
+        $data = $request->all();
+        $data["transactions_id"] = $id;
 
-    //     TransactionDetail::create($data);
+        TransactionDetail::create($data);
 
-    //     $transaction = Transaction::with(["travel_package"])->find($id);
+        $transaction = Transaction::with(["travel_package"])->find($id);
 
-    //     $transaction->transaction_total += $transaction->travel_package->price;
+        // $total = ($transaction->travel_package->price * 5 / 100) + ($transaction->travel_package->price)
 
-    //     $transaction->save();
+        $transaction->transaction_total +=
+            ($transaction->travel_package->price * 5) / 100 +
+            $transaction->travel_package->price;
 
-    //     return redirect()->route("checkout", $id);
-    // }
+        $transaction->save();
 
-    // public function success(Request $request, $id)
-    // {
-    //     $transaction = Transaction::findOrFail($id);
-    //     $transaction->transaction_status = "PENDING";
-    //     return view("pages.success");
-    // }
+        return redirect()->route("checkout", $id);
+    }
+
+    public function success(Request $request, $id)
+    {
+        $transaction = Transaction::findOrFail($id);
+        $transaction->transaction_status = "PENDING";
+
+        $transaction->save();
+
+        return view("pages.success");
+    }
 }

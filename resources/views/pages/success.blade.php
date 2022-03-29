@@ -1,6 +1,6 @@
 @extends('layouts.success')
 @section('title')
-- Checkout Success
+Checkout Success
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
           <br />
           tolong dibaca baik-baik
         </p>
-        <a href="index.html" class="btn btn-home-page mt-3 px-5">
+        <a href="{{ route('home') }}" class="btn btn-home-page mt-3 px-5">
           Home Page
         </a>
       </div>

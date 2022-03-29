@@ -65,6 +65,17 @@ Route::get("/checkout/{id}", [CheckoutController::class, "index"])
     ->name("checkout")
     ->middleware(["auth", "verified"]);
 
+Route::post("/checkout/create/{detail_id}", [
+    CheckoutController::class,
+    "create",
+])
+    ->name("checkout-create")
+    ->middleware(["auth", "verified"]);
+
+Route::get("/checkout/confirm/{id}", [CheckoutController::class, "success"])
+    ->name("checkout-success")
+    ->middleware(["auth", "verified"]);
+
 // Admin Route
 
 Route::prefix("kim")
