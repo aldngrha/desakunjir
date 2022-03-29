@@ -40,15 +40,18 @@ Checkout
               <form method="POST" action="{{ route('checkout-create', $item->id) }}">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Nama Lengkap</label>
-                  <input type="text" class="form-control" required placeholder="Nama lengkap" />
+                  <input type="text" class="form-control" required placeholder="Nama lengkap"
+                    value="{{ Auth::user()->name }}" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Alamat Email</label>
-                  <input type="email" class="form-control" required placeholder="Alamat email" />
+                  <input type="email" class="form-control" required placeholder="Alamat email"
+                    value="{{ Auth::user()->email }}" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">No. Hp</label>
-                  <input type="text" class="form-control" required placeholder="Nomor handphone atau whatsapp" />
+                  <input type="text" class="form-control" required placeholder="Nomor handphone atau whatsapp"
+                    value="{{ Auth::user()->whatsapp_number }}" />
                 </div>
                 <h5 class="mt-3 mb-3">Transfer</h5>
                 <p class="tf">

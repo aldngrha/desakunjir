@@ -39,12 +39,12 @@
   <li class="nav-item {{ request()->is('pokdarwis/gallery*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('gallery.index') }}">
       <i class="fas fa-fw fa-images"></i>
-      <span>Gallery</span></a>
+      <span>Photo</span></a>
   </li>
   <li class="nav-item {{ request()->is('pokdarwis/photo*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('photo.index') }}">
       <i class="fas fa-fw fa-images"></i>
-      <span>Photo</span></a>
+      <span>Gallery</span></a>
   </li>
   <li class="nav-item {{ request()->is('pokdarwis/transaction*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('transaction.index') }}">

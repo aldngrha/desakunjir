@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
             "email" => "pokdarwisdesakunjir@gmail.com",
             "password" => bcrypt("adminpokdarwis"),
             "roles" => "POKDARWIS",
+            "whatsapp_number" => "089761728391",
         ]);
 
         DB::table("users")->insert([
@@ -29,6 +30,7 @@ class UsersTableSeeder extends Seeder
             "email" => "kimdesakunjir@gmail.com",
             "password" => bcrypt("adminkim"),
             "roles" => "KIM",
+            "whatsapp_number" => "087819283121",
         ]);
 
         DB::table("users")->insert([
@@ -37,6 +39,7 @@ class UsersTableSeeder extends Seeder
             "email" => "aldngrha@gmail.com",
             "password" => bcrypt("ayufeb"),
             "roles" => "USER",
+            "whatsapp_number" => "089718392103",
         ]);
     }
 }

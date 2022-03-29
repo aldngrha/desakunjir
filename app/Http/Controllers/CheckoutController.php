@@ -37,9 +37,9 @@ class CheckoutController extends Controller
 
         TransactionDetail::create([
             "transactions_id" => $transaction->id,
-            "name" => "name",
-            "email" => "email",
-            "number" => "number",
+            "name" => Auth::user()->name,
+            "email" => Auth::user()->email,
+            "number" => Auth::user()->whatsapp_number,
         ]);
 
         return redirect()->route("checkout", $transaction->id);

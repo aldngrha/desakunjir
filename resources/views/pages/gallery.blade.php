@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid">
+    <div class="container mb-4">
       <div class="row mt-4">
         @foreach ($galleries as $gallery)
         <div class="item col-sm-6 col-md-4 mb-4">
