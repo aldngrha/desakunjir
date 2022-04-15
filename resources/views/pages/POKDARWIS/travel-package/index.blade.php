@@ -1,7 +1,7 @@
 @extends('layouts.POKDARWIS.admin')
 
 @section('title')
-Dashboard
+Paket Wisata
 @endsection
 
 @section('content')

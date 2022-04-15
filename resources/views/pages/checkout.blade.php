@@ -56,7 +56,7 @@ Checkout
                 <h5 class="mt-3 mb-3">Transfer</h5>
                 <p class="tf">
                   Kirim bukti transfer ke
-                  <a href="wa.me/62{{ $item->travel_package->whatsapp_number }}" class="whatsapp">Whatsapp
+                  <a href="{{ $item->travel_package->whatsapp_number }}" class="whatsapp">Whatsapp
                     <i class="fa fa-whatsapp"></i>
                   </a>
                 </p>

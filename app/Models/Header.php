@@ -11,7 +11,7 @@ class Header extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ["image"];
+    protected $fillable = ["title", "sentence", "image"];
 
     protected $hidden = [];
 }

@@ -15,10 +15,12 @@ class HomeController extends Controller
         $post = Post::with(["photos"])
             ->latest()
             ->get();
+        $headers = Header::all();
 
         return view("pages.home", [
             "items" => $items,
             "post" => $post,
+            "headers" => $headers,
         ]);
     }
 }

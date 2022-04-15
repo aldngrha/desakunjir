@@ -27,7 +27,15 @@ Tambah Header
       <form action="{{ route('header.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-          <label for="image">Header</label>
+          <label for="title">Judul</label>
+          <input type="text" class="form-control" name="title" placeholder="Judul" value="{{ old('title') }}">
+        </div>
+        <div class="form-group">
+          <label for="sentence">Kalimat</label>
+          <input type="text" class="form-control" name="sentence" placeholder="Kalimat" value="{{ old('sentence') }}">
+        </div>
+        <div class="form-group">
+          <label for="image">Gambar</label>
           <input type="file" name="image" class="form-control" placeholder="Gambar">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Simpan</button>

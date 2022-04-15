@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col p-0">
           <nav>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb ml-3">
               <a href="{{ route('home') }}" class="breadcrumb-item">
                 <li>Home</li>
               </a>

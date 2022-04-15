@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <nav class="row navbar navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand" href="#"> desa<span>kunjir</span> </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
@@ -49,8 +49,6 @@
           {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu">
-          <a href="{{ route('changePasswordGet') }}" class="dropdown-item">Data Diri</a>
-          <div class="dropdown-divider"></div>
           <a href="{{ route('changePasswordGet') }}" class="dropdown-item">Ubah Kata Sandi</a>
         </div>
       </li>

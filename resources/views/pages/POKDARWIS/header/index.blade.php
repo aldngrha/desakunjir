@@ -21,6 +21,8 @@ Header
           <thead>
             <tr>
               <th>ID</th>
+              <th>Judul</th>
+              <th>Kalimat</th>
               <th>Gambar</th>
               <th>Action</th>
             </tr>
@@ -29,6 +31,8 @@ Header
             @forelse ($items as $item)
             <tr>
               <td>{{ $item->id }}</td>
+              <td>{{ $item->title }}</td>
+              <td>{{ $item->sentence }}</td>
               <td>
                 <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
               </td>

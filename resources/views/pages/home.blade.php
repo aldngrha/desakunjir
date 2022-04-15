@@ -1,16 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="text-center">
-    <h1>
-        Nikmati Wisata Yang Indah Dan Tempat Istirahat <br />
-        Yang Nyaman Hanya Dengan Sekali Klik
-    </h1>
-    <p class="mt-3">
-        Kamu akan melihat keindahan <br />
-        yang belum pernah dilihat sebelumnya
-    </p>
-    <a href="{{ route('register') }}" class="btn btn-start px-4 mt-4"> Start Now </a>
+<header id="carouselExampleCaptions" class="text-center carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        @foreach ($headers as $photo)
+        <li data-target="#carouselExampleCaptions" data-slide-to="{{ $photo['id'] }}" class="active"></li>
+        @endforeach
+    </ol>
+    <div class="carousel-inner">
+        @foreach ($headers as $header)
+        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+            <img src="{{ Storage::url($header->image) }}" class="d-block w-100" width="1512px" height="575px">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>
+                    {{ $header->title }}
+                </h1>
+                <p class="mt-3">
+                    {{ $header->sentence }}
+                </p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </button>
 </header>
 <!-- End Header -->
 
@@ -33,7 +52,7 @@
     <section class="section-popular-content" id="popularContent">
         <div class="container">
             <div class="section-popular-travel row">
-                @foreach ($items as $item)
+                @foreach ($items->slice(0,4) as $item)
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="card-travel-right d-flex flex-column"
                         style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : '' }}')">

@@ -141,7 +141,7 @@ body {
 // Navbar
 
 .navbar-brand {
-    z-index: 1;
+    z-index: 2;
     position: relative;
     max-height: 40px;
     text-transform: uppercase;
@@ -149,6 +149,7 @@ body {
     color: #061771 !important;
     font-size: 25px;
     margin-top: -18px;
+    margin-left: 110px;
 
     span {
         color: #ff7a00;
@@ -156,7 +157,7 @@ body {
 }
 
 .navbar-light {
-    z-index: 1;
+    z-index: 2;
     position: relative;
     .navbar-nav {
         .nav-link {
@@ -176,11 +177,11 @@ body {
 }
 
 .btn-navbar-right {
-    z-index: 1;
+    z-index: 2;
     position: relative;
     margin-top: -10px !important;
     margin-bottom: -8px !important;
-    margin-right: -18px !important;
+    margin-right: -16px !important;
 
     height: 70px;
     border-radius: 0;
@@ -189,6 +190,8 @@ body {
 .btn-login {
     background-color: #061771;
     color: #fff;
+    z-index: 2;
+    position: relative;
 
     &:hover {
         background: #0f2aad;
@@ -199,15 +202,15 @@ body {
 // Header
 
 header {
-    padding: 180px 0 165px;
-    background-image: url("../images/header.jpg");
-    background-size: cover;
-    margin-top: -70px;
+    img {
+        z-index: 0;
+        position: relative;
+    }
 
     h1,
     p {
         color: #fff;
-        z-index: 1;
+        z-index: 2;
         position: relative;
     }
 
@@ -215,21 +218,21 @@ header {
         font-family: "Old Standard TT", serif;
         font-weight: bold;
         font-size: 50px;
-        z-index: 1;
+        z-index: 2;
         position: relative;
     }
 
     p {
         font-weight: 100;
-        font-size: 22px;
-        z-index: 1;
+        font-size: 18px;
+        z-index: 2;
         position: relative;
     }
 
     .btn-start {
         background-color: #ff7a00;
         color: #fff;
-        z-index: 1;
+        z-index: 2;
         position: relative;
 
         &:hover {
@@ -237,6 +240,20 @@ header {
             color: #fff;
         }
     }
+}
+
+header::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+    );
 }
 
 // Favorit
@@ -284,14 +301,15 @@ header {
                 position: relative;
                 z-index: 1;
                 padding-left: 20px;
+                margin-bottom: 10px;
             }
 
             .travel-button {
                 padding-left: 20px;
                 position: relative;
                 z-index: 1;
+                margin-bottom: 20px;
                 .btn-travel-details {
-                    margin-top: 5px;
                     background-color: #ff7a00;
                     color: #fff;
 
@@ -310,6 +328,7 @@ header {
             height: 100%;
             position: absolute;
             bottom: 0;
+            margin-bottom: 20px;
             border-radius: 25px;
             background-image: linear-gradient(
                 to top,
@@ -624,14 +643,15 @@ header {
                 position: relative;
                 z-index: 1;
                 padding-left: 20px;
+                margin-bottom: 10px;
             }
 
             .travel-button {
                 padding-left: 20px;
                 position: relative;
                 z-index: 1;
+                margin-bottom: 20px;
                 .btn-travel-details {
-                    margin-top: 5px;
                     background-color: #ff7a00;
                     color: #fff;
 
@@ -650,6 +670,7 @@ header {
             height: 100%;
             position: absolute;
             bottom: 0;
+            margin-bottom: 20px;
             border-radius: 25px;
             background-image: linear-gradient(
                 to top,

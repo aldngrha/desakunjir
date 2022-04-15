@@ -81,7 +81,7 @@ Tambah Paket Travel
         <div class="form-group">
           <label for="whatsapp_number">Nomor Whatsaapp</label>
           <input type="text" class="form-control" name="whatsapp_number"
-            placeholder="Isi dengan awalan 8. contoh 890918281" value="{{ old('whatsapp_number') }}">
+            placeholder="Isi dengan awalan 8. contoh 890918281" value="wa.me/62">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
       </form>

@@ -28,6 +28,14 @@ Ubah Header
         @method("PUT")
         @csrf
         <div class="form-group">
+          <label for="title">Judul</label>
+          <input type="text" class="form-control" name="title" placeholder="Judul" value="{{ $item->title }}">
+        </div>
+        <div class="form-group">
+          <label for="sentence">Kalimat</label>
+          <input type="text" class="form-control" name="sentence" placeholder="Kalimat" value="{{ $item->sentence }}">
+        </div>
+        <div class="form-group">
           <label for="image">Gambar</label>
           <input type="file" name="image" class="form-control" placeholder="Gambar">
         </div>

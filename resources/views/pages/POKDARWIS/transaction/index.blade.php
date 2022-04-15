@@ -41,9 +41,9 @@ Transaksi
                     <span class="badge badge-success">
                       @elseif ($item->transaction_status == "FAILED")
                       <span class="badge badge-danger">
+                        @endif
+                        {{ $item->transaction_status }}
                       </span>
-                      @endif
-                      {{ $item->transaction_status }}
               </td>
               <td>
                 <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
