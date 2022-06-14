@@ -149,11 +149,14 @@ body {
     color: #061771 !important;
     font-size: 25px;
     margin-top: -18px;
-    margin-left: 110px;
 
     span {
         color: #ff7a00;
     }
+}
+
+.nb {
+    margin-left: 105px;
 }
 
 .navbar-light {
@@ -192,6 +195,18 @@ body {
     color: #fff;
     z-index: 2;
     position: relative;
+
+    &:hover {
+        background: #0f2aad;
+        color: #fff;
+    }
+}
+
+.btn-eye {
+    background-color: #061771;
+    color: #fff;
+    height: 46px;
+    position: fixed;
 
     &:hover {
         background: #0f2aad;
@@ -739,6 +754,7 @@ header::after {
         .btn-lihat-detail {
             background-color: #ff7a00;
             color: #fff;
+            margin-top: -20px;
 
             &:hover {
                 color: #fff;

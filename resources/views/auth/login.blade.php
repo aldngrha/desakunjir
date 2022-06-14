@@ -24,20 +24,24 @@ Login
     </div>
 
     <div class="mb-3">
-      <label for="password" class="sr-only">{{ __('Password')
-        }}</label>
+      <div class="form-group">
+        <div class="input-group">
+          <label for="password" class="sr-only">{{ __('Password')
+            }}</label>
+          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+            name="password" placeholder="Kata Sandi" required autocomplete="current-password">
+          <div class="input-group-append">
+            <button id="check" class="btn btn-eye"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+        @error('password')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
 
-      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-        placeholder="Kata Sandi" required autocomplete="current-password">
-
-      @error('password')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror
     </div>
-
-
 
     <div class="form-check mb-3">
       <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : ''

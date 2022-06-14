@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="#"> desa<span>kunjir</span> </a>
+    <a class="navbar-brand nb" href="#"> desa<span>kunjir</span> </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
       <span class="navbar-toggler-icon"></span>
     </button>

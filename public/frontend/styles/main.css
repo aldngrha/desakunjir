@@ -146,11 +146,14 @@ body {
   color: #061771 !important;
   font-size: 25px;
   margin-top: -18px;
-  margin-left: 110px;
 }
 
 .navbar-brand span {
   color: #ff7a00;
+}
+
+.nb {
+  margin-left: 105px;
 }
 
 .navbar-light {
@@ -190,6 +193,18 @@ body {
 }
 
 .btn-login:hover {
+  background: #0f2aad;
+  color: #fff;
+}
+
+.btn-eye {
+  background-color: #061771;
+  color: #fff;
+  height: 46px;
+  position: fixed;
+}
+
+.btn-eye:hover {
   background: #0f2aad;
   color: #fff;
 }
@@ -706,6 +721,7 @@ header::after {
 .section-blog .card-blog .btn-lihat-detail {
   background-color: #ff7a00;
   color: #fff;
+  margin-top: -20px;
 }
 
 .section-blog .card-blog .btn-lihat-detail:hover {

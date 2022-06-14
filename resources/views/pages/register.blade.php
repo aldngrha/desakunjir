@@ -6,7 +6,7 @@
 @section('content')
 <div class="card card-login mt-5">
   <form class="form-signin">
-    <p class="text-center"><a class="navbar-brand" href="#"> desa<span>kunjir</span> </a></p>
+    <p class="text-center mr-5"><a class="navbar-brand" href="#"> desa<span>kunjir</span> </a></p>
     <p class="text-center title-login">Daftar untuk dapat memesan</p>
     <label for="inputEmail" class="sr-only">Username</label>
     <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>

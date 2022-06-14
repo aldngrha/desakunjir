@@ -46,44 +46,49 @@ Register
     </div>
 
     <div class="mb-3">
-      <label for="password" class="sr-only">{{ __('Password')
-        }}</label>
+      <div class="form-group">
 
-      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-        placeholder="Kata Sandi" required autocomplete="current-password">
+        <div class="input-group">
+          <label for="password" class="sr-only">{{ __('Password')
+            }}</label>
+          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+            name="password" placeholder="Kata Sandi" required autocomplete="current-password">
+          <div class="input-group-append">
+            <button id="check" class="btn btn-eye"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+        @error('password')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
 
-      @error('password')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror
-    </div>
+      <div class="mb-3">
+        <label for="password-confirm" class="sr-only">{{ __('Ulangi kata sandi') }}</label>
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+          autocomplete="new-password" placeholder="Ulangi kata sandi">
+      </div>
 
-    <div class="mb-3">
-      <label for="password-confirm" class="sr-only">{{ __('Ulangi kata sandi') }}</label>
-      <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-        autocomplete="new-password" placeholder="Ulangi kata sandi">
-    </div>
+      <div class="mb-3">
+        <label for="whatsapp_number" class="sr-only">{{ __('Nomor Handphone') }}</label>
+        <input id="whatsapp_number" type="text" class="form-control @error('whatsapp_number') is-invalid @enderror"
+          name="whatsapp_number" value="{{ old('whatsapp_number') }}" placeholder="Nomor Handphone" required
+          autocomplete="whatsapp_number" autofocus>
 
-    <div class="mb-3">
-      <label for="whatsapp_number" class="sr-only">{{ __('Nomor Handphone') }}</label>
-      <input id="whatsapp_number" type="text" class="form-control @error('whatsapp_number') is-invalid @enderror"
-        name="whatsapp_number" value="{{ old('whatsapp_number') }}" placeholder="Nomor Handphone" required
-        autocomplete="whatsapp_number" autofocus>
+        @error('username')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
 
-      @error('username')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror
-    </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block btn-login">
+        {{ __('Daftar') }}
+      </button>
 
-    <button type="submit" class="btn btn-lg btn-primary btn-block btn-login">
-      {{ __('Daftar') }}
-    </button>
-
-    <p class="text-muted">Sudah punya akun? <a href="{{ route('login') }}" class="register">Masuk</a></p>
-    <p class="mt-5 mb-3 text-muted text-center">&copy; Desa Kunjir</p>
+      <p class="text-muted">Sudah punya akun? <a href="{{ route('login') }}" class="register">Masuk</a></p>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; Desa Kunjir</p>
   </form>
 </div>
 

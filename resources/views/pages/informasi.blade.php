@@ -31,7 +31,7 @@
                 <div class="col-sm-6 col-md-4 col-lg-6">
                   <div class="blog">Blog</div>
                   <div class="blog-title">
-                    {{ $post->title }}
+                    {{ substr($post->title, 0, 35) }}
                   </div>
                   <div class="blog-description">
                     {!!substr($post->about, 0, 300)!!}
